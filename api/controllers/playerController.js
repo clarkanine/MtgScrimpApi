@@ -12,7 +12,7 @@ exports.list_all_players = function(req, res) {
     Player.find({}, '-__v', function(err, player) {
       if (err)
         res.send(err);
-        res.setHeader('Content-Disposition', contentDisposition('test'));
+        // res.setHeader('Content-Disposition', contentDisposition('test'));
       res.json(player);
     });
   };
