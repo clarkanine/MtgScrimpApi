@@ -12,7 +12,7 @@ var express = require('express'),
 mongoose.Promise = global.Promise;
 console.log(process.env.MONGOLAB_URI);
 console.log(__dirname);
-mongoose.connect(process.env.MONGOLAB_URI, function (error) {
+mongoose.connect('mongodb://localhost:27017/mtg-scrimp_db', function (error) {
   if (error) console.error(error);
   else console.log('mongo connected');
 }); 
