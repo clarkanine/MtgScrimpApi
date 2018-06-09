@@ -35,8 +35,8 @@ app.listen(port);
 console.log('todo list RESTful API server started on: ' + port);
 
 app.use(function(req, res) {
-    res.status(404).send({url: req.originalUrl + ' not found'})
         // Website you wish to allow to connect
+        console.log("setting Access-Control-Allow-Origin headers");
         res.setHeader('Access-Control-Allow-Origin', 'https://stark-headland-48165.herokuapp.com/');
 
         // Request methods you wish to allow
@@ -49,6 +49,7 @@ app.use(function(req, res) {
         // to the API (e.g. in case you use sessions)
         res.setHeader('Access-Control-Allow-Credentials', true);
     
+        res.status(404).send({url: req.originalUrl + ' not found'})
         // Pass to next layer of middleware
         next();
   });
