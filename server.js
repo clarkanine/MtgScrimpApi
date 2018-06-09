@@ -12,8 +12,13 @@ var express = require('express'),
 mongoose.Promise = global.Promise;
 console.log(process.env.MONGOLAB_URI);
 console.log(__dirname);
+var mongoDb = 'mongodb://localhost:27017/mtg-scrimp_db';
 mongoose.connect('mongodb://localhost:27017/mtg-scrimp_db', function (error) {
-  if (error) console.error(error);
+  if (error) 
+  {
+    console.error(error);
+    console.log('Could not connect to ' + mongoDb);
+  }
   else console.log('mongo connected');
 }); 
 
@@ -28,10 +33,6 @@ routes(app); //register the route
 app.listen(port);
 
 console.log('todo list RESTful API server started on: ' + port);
-
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname + '/dist/MtgScrimpMat/index.html'));
-});
 
 app.use(function(req, res) {
     res.status(404).send({url: req.originalUrl + ' not found'})
