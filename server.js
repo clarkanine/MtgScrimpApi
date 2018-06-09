@@ -10,14 +10,14 @@ var express = require('express'),
   
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-console.log(process.env.MONGOLAB_URI);
+console.log(process.env.MONGODB_URI);
 console.log(__dirname);
 var mongoDb = 'mongodb://localhost:27017/mtg-scrimp_db';
-mongoose.connect('mongodb://localhost:27017/mtg-scrimp_db', function (error) {
+mongoose.connect(process.env.MONGODB_URI, function (error) {
   if (error) 
   {
     console.error(error);
-    console.log('Could not connect to ' + mongoDb);
+    console.log('Could not connect to ' + mongoDb); 
   }
   else console.log('mongo connected');
 }); 
