@@ -10,6 +10,8 @@ var express = require('express'),
   
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
+console.log(process.env.MONGOLAB_URI);
+console.log(__dirname);
 mongoose.connect(process.env.MONGOLAB_URI, function (error) {
   if (error) console.error(error);
   else console.log('mongo connected');
