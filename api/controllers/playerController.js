@@ -8,6 +8,7 @@ Player = mongoose.model('Players');
 
 exports.list_all_players = function(req, res) {
     console.log('getting players');
+    res.json(new Player());
     Player.find({}, '-__v', function(err, player) {
       if (err)
         res.send(err);
