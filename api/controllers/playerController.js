@@ -14,6 +14,7 @@ exports.list_all_players = function(req, res) {
         res.send(err);
         // res.setHeader('Content-Disposition', contentDisposition('test'));
       console.log(player);
+      res.setHeader('Access-Control-Allow-Origin', 'https://stark-headland-48165.herokuapp.com/');
       res.json(player);
     });
   };
