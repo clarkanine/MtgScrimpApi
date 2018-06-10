@@ -13,7 +13,7 @@ mongoose.Promise = global.Promise;
 console.log(process.env.MONGODB_URI);
 console.log(__dirname);
 var mongoDb = 'mongodb://localhost:27017/mtg-scrimp_db';
-mongoose.connect('mongodb+srv://aaronclark:AkindOFmagic-1@scrimp-oumch.mongodb.net/test?retryWrites=true', function (error) {
+mongoose.connect(process.env.MONGODB_URI, function (error) {
   if (error) 
   {
     console.error(error);
