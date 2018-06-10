@@ -13,6 +13,7 @@ exports.list_all_players = function(req, res) {
       if (err)
         res.send(err);
         // res.setHeader('Content-Disposition', contentDisposition('test'));
+      console.log(player);
       res.json(player);
     });
   };
