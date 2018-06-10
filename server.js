@@ -6,6 +6,7 @@ var express = require('express'),
   mongoose = require('mongoose'),
   Task = require('./api/models/todoListModel'), //created model loading here
   Player = require('./api/models/playerModel'), 
+  cors = require('cors'),
   bodyParser = require('body-parser');
   
 // mongoose instance connection url connection
@@ -25,6 +26,7 @@ mongoose.connect(process.env.MONGODB_URI, function (error) {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
 
 var routes = require('./api/routes/playerRoutes'); //importing route
 // var routes = require('./api/modules.js'); //importing route
