@@ -29,4 +29,4 @@ var PlayerSchema = new Schema({
     }
   });
 
-module.exports = mongoose.model('Players', PlayerSchema);
+module.exports = mongoose.model('players', PlayerSchema);

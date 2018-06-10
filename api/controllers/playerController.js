@@ -4,7 +4,7 @@ var contentDisposition = require('content-disposition');
 
 var mongoose = require('mongoose'),
 
-Player = mongoose.model('Players');
+Player = mongoose.model('players');
 
 exports.list_all_players = function(req, res) {
     console.log('getting players');
