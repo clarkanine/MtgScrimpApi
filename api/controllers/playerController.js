@@ -8,11 +8,24 @@ Player = mongoose.model('players');
 
 exports.list_all_players = function(req, res) {
     console.log('getting players');
-    // res.json(new Player());
+
     Player.find({}, '-__v', function(err, player) {
       if (err)
         res.send(err);
-        // res.setHeader('Content-Disposition', contentDisposition('test'));
+
+      console.log(player);
+      res.setHeader('Access-Control-Allow-Origin', 'https://stark-headland-48165.herokuapp.com');
+      res.json(player);
+    });
+  };
+
+  exports.list_all_players_for_user = function(req, res) {
+    console.log('getting players for user' + req.params.userId);
+
+    Player.find({userIdentifier: req.params.userId}, '-__v', function(err, player) {
+      if (err)
+        res.send(err);
+
       console.log(player);
       res.setHeader('Access-Control-Allow-Origin', 'https://stark-headland-48165.herokuapp.com');
       res.json(player);

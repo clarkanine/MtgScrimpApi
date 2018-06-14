@@ -13,14 +13,14 @@ var express = require('express'),
 mongoose.Promise = global.Promise;
 console.log(process.env.MONGODB_URI);
 console.log(__dirname);
-var mongoDb = 'mongodb://localhost:27017/mtg-scrimp_db';
-mongoose.connect(process.env.MONGODB_URI, function (error) {
+var mongoDb = process.env.MONGODB_URI ? process.env.MONGODB_URI : 'mongodb://localhost:27017/mtg-scrimp_db';
+mongoose.connect(mongoDb, function (error) {
   if (error) 
   {
     console.error(error);
     console.log('Could not connect to ' + mongoDb); 
   }
-  else console.log('mongo connected to ' + process.env.MONGODB_URI);
+  else console.log('mongo connected to ' + mongoDb);
 }); 
 
 
@@ -39,7 +39,7 @@ console.log('todo list RESTful API server started on: ' + port);
 app.use(function(req, res) {
         // Website you wish to allow to connect
         console.log("setting Access-Control-Allow-Origin headers");
-        res.setHeader('Access-Control-Allow-Origin', 'https://stark-headland-48165.herokuapp.com/');
+        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
 
         // Request methods you wish to allow
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');

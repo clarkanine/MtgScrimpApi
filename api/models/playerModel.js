@@ -4,6 +4,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var PlayerSchema = new Schema({
+    userIdentifier: {
+        type: String,
+        required: ''
+      },
     name: {
       type: String,
       required: ''
