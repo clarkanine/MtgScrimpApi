@@ -6,6 +6,7 @@ module.exports = function(app) {
     // .get(players.list_all_players)
     .get(players.list_all_players)
     .post(players.create_a_player)
+    .put(players.update_player)
 
     app.route('/players/:userId')
     .get(players.list_all_players_for_user)

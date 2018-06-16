@@ -16,6 +16,9 @@ var PlayerSchema = new Schema({
         type: String,
         required: ''
     },
+    deckList: {
+        type: String,
+    },
     wins: {
         type: Number,
         required: ''

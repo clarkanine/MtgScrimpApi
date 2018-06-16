@@ -4,7 +4,9 @@ var contentDisposition = require('content-disposition');
 
 var mongoose = require('mongoose'),
 
+
 Player = mongoose.model('players');
+var ObjectId = require('mongodb').ObjectID;
 
 exports.list_all_players = function(req, res) {
     console.log('getting players');
@@ -13,7 +15,6 @@ exports.list_all_players = function(req, res) {
       if (err)
         res.send(err);
 
-      console.log(player);
       res.setHeader('Access-Control-Allow-Origin', 'https://stark-headland-48165.herokuapp.com');
       res.json(player);
     });
@@ -26,7 +27,7 @@ exports.list_all_players = function(req, res) {
       if (err)
         res.send(err);
 
-      console.log(player);
+      // console.log(player);
       res.setHeader('Access-Control-Allow-Origin', 'https://stark-headland-48165.herokuapp.com');
       res.json(player);
     });
@@ -35,10 +36,27 @@ exports.list_all_players = function(req, res) {
   exports.create_a_player = function(req, res) {
     delete req.body._id;
     var new_player = new Player(req.body);
-    // delete new_player._id;
     console.log('creating this guy');
     console.log(new_player);
     new_player.save(function(err, player) {
+      if (err)
+      {
+        console.log(err);
+        res.send(err);
+        console.log(new_player);
+      }
+       
+      res.json(player);
+    });
+  };
+
+  exports.update_player = function(req, res) {
+    var new_player = new Player(req.body);
+    // delete new_player._id;
+    console.log('updating this guy');
+    console.log(new_player);
+    console.log(new_player._id);
+    Player.updateOne({_id: new_player._id}, new_player, function(err, player) {
       if (err)
       {
         console.log(err);
